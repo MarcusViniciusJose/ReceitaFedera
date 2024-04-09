@@ -42,8 +42,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private double calcularImposto(double renda) {
-        // Implemente aqui o cálculo do imposto de renda com base na tabela fornecida
-        // Neste exemplo, apenas retornaremos 0 como imposto
-        return 0;
+        double imposto;
+
+        if (renda <= 2259.20) {
+            imposto = 0;
+        } else if (renda <= 2826.65) {
+            imposto = (renda - 2259.20) * 0.075 - 169.44;
+        } else if (renda <= 3751.05) {
+            imposto = (renda - 2826.65) * 0.15 - 381.44;
+        } else if (renda <= 4664.68) {
+            imposto = (renda - 3751.05) * 0.225 - 662.77;
+        } else {
+            imposto = (renda - 4664.68) * 0.275 - 896.00;
+        }
+
+        return imposto;
     }
 }

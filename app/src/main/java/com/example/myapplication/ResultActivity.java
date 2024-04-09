@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DecimalFormat;
+
 public class ResultActivity extends AppCompatActivity {
 
     @Override
@@ -25,6 +27,7 @@ public class ResultActivity extends AppCompatActivity {
             double imposto = intent.getDoubleExtra("imposto", 0);
 
             String resultado = nome + ", com renda mensal de R$ " + renda;
+
             if (imposto == 0) {
                 resultado += ", não precisa pagar imposto de renda.";
             } else {
@@ -37,8 +40,32 @@ public class ResultActivity extends AppCompatActivity {
         buttonCompartilhar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Implemente aqui a lógica para compartilhar as informações
-            }
+                String resultado = textViewResultado.getText().toString();
+
+                // Crie uma Intent para compartilhamento
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, resultado);
+
+                // Inicie a atividade de compartilhamento
+                startActivity(Intent.createChooser(intent, "Compartilhar via")); }
         });
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
