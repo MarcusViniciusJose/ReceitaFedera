@@ -31,7 +31,11 @@ public class ResultActivity extends AppCompatActivity {
             if (imposto == 0) {
                 resultado += ", não precisa pagar imposto de renda.";
             } else {
-                resultado += ", deve pagar R$ " + imposto + " de imposto de renda.";
+                // Formatando o valor do imposto com dois dígitos após a vírgula
+                DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+                String impostoFormatado = decimalFormat.format(imposto);
+
+                resultado += ", deve pagar R$ " + impostoFormatado + " de imposto de renda.";
             }
 
             textViewResultado.setText(resultado);
@@ -48,24 +52,8 @@ public class ResultActivity extends AppCompatActivity {
                 intent.putExtra(Intent.EXTRA_TEXT, resultado);
 
                 // Inicie a atividade de compartilhamento
-                startActivity(Intent.createChooser(intent, "Compartilhar via")); }
+                startActivity(Intent.createChooser(intent, "Compartilhar via"));
+            }
         });
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
