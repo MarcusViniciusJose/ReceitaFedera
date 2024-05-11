@@ -47,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
         if (renda <= 2259.20) {
             imposto = 0;
         } else if (renda <= 2826.65) {
-            imposto = renda * 0.075 - 169.44;
+            imposto = (renda * 0.075) - 169.44;
         } else if (renda <= 3751.05) {
-            imposto = renda * 0.15 - 381.44;
+            imposto = (renda * 0.15) - 381.44;
         } else if (renda <= 4664.68) {
-            imposto = renda * 0.225 - 662.77;
+            imposto = (renda * 0.225) - 662.77;
         } else {
-            imposto = renda * 0.275 - 896.00;
+            imposto = (renda * 0.275) - 896.00;
         }
 
         return imposto;
